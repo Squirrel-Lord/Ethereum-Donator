@@ -11,12 +11,29 @@ contract Donator {
     string public receiverName;
     uint public totalDonations;
     uint public minimumDonation;
+    address[] donatorAddresses;
+    mapping (address => bool) public donatorAcceptances;
 
     constructor() public {
         receiverAddress = msg.sender;
         receiverName = "Contract Creator";
         totalDonations = 0;
         minimumDonation = 1;
+    }
+    
+    modifier donatorsAccept {
+        bool majorityAccepts = false;
+        uint acceptCount = 0;
+        for (uint i = 0; i < donatorAddresses.length; i++)
+        {
+            if (donatorAcceptances[donatorAddresses[i]])
+            {
+                acceptCount++;
+            }
+        }
+        require (acceptCount >= donatorAddresses.length / 2,
+                "Error: At least half of the donators must first accept the receiver's request");
+        _;
     }
 
     function () external payable {}
@@ -28,7 +45,19 @@ contract Donator {
     }
     
     function donate() public payable {
-        receiverAddress.transfer(msg.value * 1000000000000000000);
+        address(this).transfer(msg.value * 1000000000000000000);
+        //TODO: send ETH to smart contract, not directly to receiver address
         totalDonations += msg.value;
+    }
+    
+    function approveReceiverRequest() public {
+        donatorAcceptances[msg.sender] = true;
+    }
+    
+    /**
+     * This function lets the receiverAddress acquire the donations stored in the smart contract.
+    */
+    function receiveDonations() public payable donatorsAccept {
+        receiverAddress.transfer(totalDonations * 1000000000000000000);
     }
 }

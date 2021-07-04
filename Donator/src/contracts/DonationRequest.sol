@@ -10,7 +10,9 @@
 pragma solidity ^0.5.16;
 
 contract DonationRequest {
+    uint constant public ethConverter = 1000000000000000000;
     address payable private receiverAddress;
+    bool public isReceiver;
     string public receiverName;
     uint public totalDonations;
     bool public donationsReceived;
@@ -35,10 +37,18 @@ contract DonationRequest {
     }
     
     /**
+     * This function returns true if the message sender is the address of the receiver
+     * and false otherwise.
+    */
+    function addressIsReceiver() public view returns (bool) {
+        return(msg.sender == receiverAddress);
+    }
+    
+    /**
      * This function allows users to donate ether to the contract.
     */
     function donate() public payable {
-        address(this).transfer(msg.value * 1000000000000000000);
+        address(this).transfer(msg.value * ethConverter);
         totalDonations += msg.value;
     }
     
@@ -46,7 +56,7 @@ contract DonationRequest {
      * This function lets the receiverAddress acquire the donations stored in the smart contract.
     */
     function receiveDonations() public payable {
-        receiverAddress.transfer(totalDonations * 1000000000000000000);
+        receiverAddress.transfer(totalDonations * ethConverter);
         donationsReceived = true;
     }
 }

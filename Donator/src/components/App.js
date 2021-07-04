@@ -24,8 +24,14 @@ class App extends Component {
     if(donationRequestData) {
       const donationRequest = new web3.eth.Contract(DonationRequest.abi, donationRequestData.address)
       this.setState({ donationRequest })
+
       let receiverName = await donationRequest.methods.receiverName().call()
-      this.setState({ receiverName: receiverName.toString() })
+      let totalDonations = await donationRequest.methods.totalDonations().call()
+
+      //Check if User Address is Receiver
+
+      this.setState({ receiverName: receiverName.toString() ,
+                      totalDonations: totalDonations })
     } else {
       window.alert('DonationRequest contract not deployed to detected network.')
     }
@@ -51,7 +57,8 @@ class App extends Component {
     this.state = {
       account: '0x0',
       receiverName: 'Receiver Name',
-      loading: true
+      loading: true,
+      totalDonations: 0
     }
   }
 
@@ -63,12 +70,13 @@ class App extends Component {
       content = <Main
         receiverName={this.state.receiverName}
         account={this.state.account}
+        totalDonations={this.state.totalDonations}
       />
     }
 
     return (
-      <div>
-        Test
+      <div className="text-center">
+        Ethereum Donator
         {content}
       </div>
     );

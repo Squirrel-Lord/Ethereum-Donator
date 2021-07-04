@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Web3 from 'web3'
 import Donator from '../abis/Donator.json'
+import Main from './Main'
 import './App.css'
 
 class App extends Component {
@@ -18,13 +19,15 @@ class App extends Component {
 
     const networkId = await web3.eth.net.getId()
 
-    // Donator Contract
+    // Load initial DonationRequest contract data
     const donatorData = Donator.networks[networkId]
     if(donatorData) {
       const donator = new web3.eth.Contract(Donator.abi, donatorData.address)
       this.setState({ donator })
+      let receiverName = await donator.methods.receiverName().call()
+      this.setState({ receiverName: receiverName.toString() })
     } else {
-      window.alert('Donator contract not deployed to detected network.')
+      window.alert('DonationRequest contract not deployed to detected network.')
     }
 
     this.setState({ loading: false })
@@ -47,6 +50,7 @@ class App extends Component {
     super(props)
     this.state = {
       account: '0x0',
+      receiverName: 'Receiver Name',
       loading: true
     }
   }
@@ -55,6 +59,11 @@ class App extends Component {
     let content
     if(this.state.loading) {
       content = <p id="loader" className="text-center">Loading...</p>
+    } else {
+      content = <Main
+        receiverName={this.state.receiverName}
+        account={this.state.account}
+      />
     }
 
     return (

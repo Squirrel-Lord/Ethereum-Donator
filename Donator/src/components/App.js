@@ -27,11 +27,11 @@ class App extends Component {
 
       let receiverName = await donationRequest.methods.receiverName().call()
       let totalDonations = await donationRequest.methods.totalDonations().call()
-
-      //Check if User Address is Receiver
+      let isReceiver = await donationRequest.methods.addressIsReceiver().call()
 
       this.setState({ receiverName: receiverName.toString() ,
-                      totalDonations: totalDonations })
+                      totalDonations: totalDonations,
+                      isReceiver: isReceiver })
     } else {
       window.alert('DonationRequest contract not deployed to detected network.')
     }
@@ -58,7 +58,8 @@ class App extends Component {
       account: '0x0',
       receiverName: 'Receiver Name',
       loading: true,
-      totalDonations: 0
+      totalDonations: 0,
+      isReceiver: true
     }
   }
 
@@ -67,10 +68,11 @@ class App extends Component {
     if(this.state.loading) {
       content = <p id="loader" className="text-center">Loading...</p>
     } else {
-      content = <Main
-        receiverName={this.state.receiverName}
-        account={this.state.account}
-        totalDonations={this.state.totalDonations}
+        content = <Main
+          receiverName={this.state.receiverName}
+          account={this.state.account}
+          totalDonations={this.state.totalDonations}
+          isReceiver={this.state.isReceiver}
       />
     }
 

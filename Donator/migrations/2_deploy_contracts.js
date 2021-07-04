@@ -1,6 +1,6 @@
-const Donator = artifacts.require('Donator')
+const DonationRequest = artifacts.require('DonationRequest')
 
 module.exports = async function(deployer) {
-  await deployer.deploy(Donator)
-  const donator = await Donator.deployed()
+  await deployer.deploy(DonationRequest)
+  const donationRequest = await DonationRequest.deployed()
 }

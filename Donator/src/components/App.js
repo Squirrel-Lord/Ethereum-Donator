@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Web3 from 'web3'
-import Donator from '../abis/Donator.json'
+import DonationRequest from '../abis/DonationRequest.json'
 import Main from './Main'
 import './App.css'
 
@@ -20,11 +20,11 @@ class App extends Component {
     const networkId = await web3.eth.net.getId()
 
     // Load initial DonationRequest contract data
-    const donatorData = Donator.networks[networkId]
-    if(donatorData) {
-      const donator = new web3.eth.Contract(Donator.abi, donatorData.address)
-      this.setState({ donator })
-      let receiverName = await donator.methods.receiverName().call()
+    const donationRequestData = DonationRequest.networks[networkId]
+    if(donationRequestData) {
+      const donationRequest = new web3.eth.Contract(DonationRequest.abi, donationRequestData.address)
+      this.setState({ donationRequest })
+      let receiverName = await donationRequest.methods.receiverName().call()
       this.setState({ receiverName: receiverName.toString() })
     } else {
       window.alert('DonationRequest contract not deployed to detected network.')

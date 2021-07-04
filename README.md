@@ -1,4 +1,13 @@
 # Ethereum-Donator
-An Ethereum donator for trustless donations without the need for third parties
+This dapp functions as an Ethereum Donator. After a user submits a donation request, other users can view the request and donate ether. All can see current donation details from the client application. Receivers can choose to receive all donations stored in the smart contract. Once a donation is received, a flag is set to notify the client. The received amount is stored in the smart contract and viewable by the client. The smart contract is terminated after donations are received.
 
-This is a dapp that let's users donate to others connected to Ethereum. The application has a variety of use cases. The donator relies on a Solidity smart contract that connects to a client-facing application with Web3.js. The front-end utilizes React.
+Tools:
+- Solidity
+- JS
+
+Frameworks:
+- Truffle
+- React
+
+Dependencies for Local Testing:
+- Ganache

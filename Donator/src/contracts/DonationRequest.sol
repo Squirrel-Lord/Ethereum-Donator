@@ -27,6 +27,16 @@ contract DonationRequest {
         require(!donationsReceived, "Error: The donation contract is inactive. Please deploy a new donation request.");
         _;
     }
+    
+    modifier isReceiver {
+        require(msg.sender == receiverAddress, "Error: Only the receiver may initiate donation receivance.");
+        _;
+    }
+    
+    modifier isNotReceiver {
+        require(msg.sender != receiverAddress, "Error: The receiver may not donate to the contract.");
+        _;
+    }
 
     function () external payable {}
 
@@ -40,26 +50,19 @@ contract DonationRequest {
     }
     
     /**
-     * This function returns true if the message sender is the address of the receiver
-     * and false otherwise.
-    */
-    function addressIsReceiver() public view returns (bool) {
-        return(msg.sender == receiverAddress);
-    }
-    
-    /**
      * This function allows users to donate ether to the contract.
     */
-    function donate() public payable active {
-        address(this).transfer(msg.value * ethConverter);
+    function donate(uint amount) public payable active isNotReceiver{
+        
+        address(this).transfer(amount * ethConverter);
         totalDonations += msg.value;
     }
     
     /**
      * This function lets the receiverAddress acquire the donations stored in the smart contract.
     */
-    function receiveDonations() public payable active {
-        receiverAddress.transfer(totalDonations * ethConverter);
+    function receiveDonations() public payable active isReceiver {
+        receiverAddress.transfer(address(this).balance);
         donationsReceived = true;
     }
 }

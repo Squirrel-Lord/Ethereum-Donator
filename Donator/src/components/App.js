@@ -26,11 +26,9 @@ class App extends Component {
 
       let receiverName = await donationRequest.methods.receiverName().call()
       let totalDonations = await donationRequest.methods.totalDonations().call()
-      let isReceiver = await donationRequest.methods.addressIsReceiver().call()
 
       this.setState({ receiverName: receiverName.toString() ,
-                      totalDonations: totalDonations,
-                      isReceiver: isReceiver })
+                      totalDonations: totalDonations })
     } else {
       window.alert('DonationRequest contract not deployed to detected network.')
     }
@@ -51,8 +49,22 @@ class App extends Component {
     }
   }
 
-  donate(amount) {
-    console.log("donate called")
+  donate = (amount) => {
+    this.setState({ state: window.ethereum.selectedAddress })
+    let msgValue = window.web3.utils.toWei(amount.toString(), 'Ether')
+    this.setState({ loading: true })
+    this.state.donationRequest.methods.donate().send(
+        { from: this.state.account,
+          value: msgValue },
+        (error, result) => { 
+          if (error)
+            console.log(error)
+          else
+            console.log(result)
+      })
+    .on('transactionHash', (hash) => {
+      this.setState({ loading: false })
+    })
   }
 
   setReceiver = (address, name) => {
@@ -96,7 +108,6 @@ class App extends Component {
           receiverName={this.state.receiverName}
           account={this.state.account}
           totalDonations={this.state.totalDonations}
-          isReceiver={this.state.isReceiver}
           donate={this.donate}
           setReceiver={this.setReceiver}
           receiveDonations={this.receiveDonations}

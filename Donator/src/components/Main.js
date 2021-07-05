@@ -10,7 +10,8 @@ class Main extends Component {
         <input type="text" id="donationAmount"></input><br></br>
         <button onClick={(event) => {
                 event.preventDefault()
-                this.props.donate()
+                let amount = document.getElementById("donationAmount").value.toString()
+                this.props.donate(amount)
               }}>Donate</button><br></br><br></br>
         <input type="text" id="newReceiverAddress" defaultValue="address"></input><br></br>
         <input type="text" id="newReceiverName" defaultValue="name"></input><br></br>

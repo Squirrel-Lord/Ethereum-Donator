@@ -52,9 +52,22 @@ class App extends Component {
     }
   }
 
+  donate() {
+    console.log("donate called")
+  }
+
+  setReceiver() {
+    console.log("setReceiver called")
+  }
+
+  receiveDonations() {
+    console.log("receiveDonations called")
+  }
+
   constructor(props) {
     super(props)
     this.state = {
+      donate: {},
       account: '0x0',
       receiverName: 'Receiver Name',
       loading: true,
@@ -73,6 +86,9 @@ class App extends Component {
           account={this.state.account}
           totalDonations={this.state.totalDonations}
           isReceiver={this.state.isReceiver}
+          donate={this.donate}
+          setReceiver={this.setReceiver}
+          receiveDonations={this.receiveDonations}
       />
     }
 

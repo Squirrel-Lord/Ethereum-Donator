@@ -12,7 +12,6 @@ pragma solidity ^0.5.16;
 contract DonationRequest {
     uint constant public ethConverter = 1000000000000000000;
     address payable private receiverAddress;
-    bool public isReceiver;
     string public receiverName;
     uint public totalDonations;
     bool public donationsReceived;
@@ -24,13 +23,17 @@ contract DonationRequest {
         donationsReceived = false;
     }
 
+    modifier active {
+        require(!donationsReceived, "Error: The donation contract is inactive. Please deploy a new donation request.");
+        _;
+    }
+
     function () external payable {}
 
     /**
      * This function updates the receiverAddress.
     */
-    function setReceiver(address payable  _receiverAddress, string memory _receiverName) public {
-        require(donationsReceived, "Error: The donation contract is inactive. Please deploy a new donation request.");
+    function setReceiver(address payable  _receiverAddress, string memory _receiverName) public active {
         require(msg.sender == receiverAddress, "Error: You must be the current receiver to set the receiving address.");
         receiverAddress = _receiverAddress;
         receiverName = _receiverName;
@@ -47,7 +50,7 @@ contract DonationRequest {
     /**
      * This function allows users to donate ether to the contract.
     */
-    function donate() public payable {
+    function donate() public payable active {
         address(this).transfer(msg.value * ethConverter);
         totalDonations += msg.value;
     }
@@ -55,7 +58,7 @@ contract DonationRequest {
     /**
      * This function lets the receiverAddress acquire the donations stored in the smart contract.
     */
-    function receiveDonations() public payable {
+    function receiveDonations() public payable active {
         receiverAddress.transfer(totalDonations * ethConverter);
         donationsReceived = true;
     }

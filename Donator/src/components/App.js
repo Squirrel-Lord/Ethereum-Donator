@@ -14,8 +14,7 @@ class App extends Component {
   async loadBlockchainData() {
     const web3 = window.web3
 
-    const accounts = await web3.eth.getAccounts()
-    this.setState({ account: accounts[0] })
+    this.setState({ account: window.ethereum.selectedAddress })
 
     const networkId = await web3.eth.net.getId()
 
@@ -52,12 +51,24 @@ class App extends Component {
     }
   }
 
-  donate() {
+  donate(amount) {
     console.log("donate called")
   }
 
-  setReceiver() {
-    console.log("setReceiver called")
+  setReceiver = (address, name) => {
+    this.setState({ state: window.ethereum.selectedAddress })
+    this.setState({ loading: true })
+    this.state.donationRequest.methods.setReceiver(address, name).send(
+        { from: this.state.account },
+        (error, result) => { 
+          if (error)
+            console.log(error)
+          else
+            console.log(result)
+      })
+    .on('transactionHash', (hash) => {
+      this.setState({ loading: false })
+    })
   }
 
   receiveDonations() {

@@ -12,10 +12,13 @@ class Main extends Component {
                 event.preventDefault()
                 this.props.donate()
               }}>Donate</button><br></br><br></br>
-        <input type="text" id="newReceiverAddress"></input><br></br>
+        <input type="text" id="newReceiverAddress" defaultValue="address"></input><br></br>
+        <input type="text" id="newReceiverName" defaultValue="name"></input><br></br>
         <button onClick={(event) => {
                 event.preventDefault()
-                this.props.setReceiver()
+                let address = document.getElementById("newReceiverAddress").value.toString()
+                let name = document.getElementById("newReceiverName").value.toString()
+                this.props.setReceiver(address, name)
               }}>Set Receiver</button><br></br>
         <button onClick={(event) => {
                 event.preventDefault()

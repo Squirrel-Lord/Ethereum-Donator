@@ -53,7 +53,7 @@ class App extends Component {
     this.setState({ state: window.ethereum.selectedAddress })
     let msgValue = window.web3.utils.toWei(amount.toString(), 'Ether')
     this.setState({ loading: true })
-    this.state.donationRequest.methods.donate().send(
+    this.state.donationRequest.methods.donate(amount).send(
         { from: this.state.account,
           value: msgValue },
         (error, result) => { 
@@ -83,8 +83,20 @@ class App extends Component {
     })
   }
 
-  receiveDonations() {
-    console.log("receiveDonations called")
+  receiveDonations = () => {
+    this.setState({ state: window.ethereum.selectedAddress })
+    this.setState({ loading: true })
+    this.state.donationRequest.methods.receiveDonations().send(
+        { from: this.state.account },
+        (error, result) => { 
+          if (error)
+            console.log(error)
+          else
+            console.log(result)
+      })
+    .on('transactionHash', (hash) => {
+      this.setState({ loading: false })
+    })
   }
 
   constructor(props) {

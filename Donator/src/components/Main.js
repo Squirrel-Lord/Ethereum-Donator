@@ -2,11 +2,17 @@ import React, { Component } from 'react'
 
 class Main extends Component {
 
+  ethConverter = 1000000000000000000
+
+  getDonatedEther() {
+    return this.props.totalDonations.toString() / this.ethConverter
+  }
+
   render() {
     return (
       <div className="text-center">
         <br></br><label>Receiver: {this.props.receiverName}</label><br></br>
-        <label>Donated Ether: {this.props.totalDonations}</label><br></br>
+        <label>Donated Ether: {this.getDonatedEther()}</label><br></br>
         <input type="text" id="donationAmount"></input><br></br>
         <button onClick={(event) => {
                 event.preventDefault()
@@ -23,6 +29,7 @@ class Main extends Component {
               }}>Set Receiver</button><br></br>
         <button onClick={(event) => {
                 event.preventDefault()
+                this.props.receiveDonations()
                 this.props.receiveDonations()
               }}>Receive Donations</button>
       </div>

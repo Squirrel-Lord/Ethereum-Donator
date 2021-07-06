@@ -30,7 +30,6 @@ class Main extends Component {
         <button onClick={(event) => {
                 event.preventDefault()
                 this.props.receiveDonations()
-                this.props.receiveDonations()
               }}>Receive Donations</button>
       </div>
     );

@@ -2,7 +2,16 @@ import React, { Component } from 'react'
 import Web3 from 'web3'
 import DonationRequest from '../abis/DonationRequest.json'
 import Main from './Main'
+import DonationDetails from './DonationDetails'
+import Donate from './Donate'
+import SetReceiver from './SetReceiver'
+import ReceiveDonations from './ReceiveDonations'
 import './App.css'
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Container from '@material-ui/core/Container';
+import { BrowserRouter, Link, Switch, Route } from 'react-router-dom'
 
 class App extends Component {
 
@@ -20,15 +29,17 @@ class App extends Component {
 
     // Load initial DonationRequest contract data
     const donationRequestData = DonationRequest.networks[networkId]
-    if(donationRequestData) {
+    if (donationRequestData) {
       const donationRequest = new web3.eth.Contract(DonationRequest.abi, donationRequestData.address)
       this.setState({ donationRequest })
 
       let receiverName = await donationRequest.methods.receiverName().call()
       let totalDonations = await donationRequest.methods.totalDonations().call()
 
-      this.setState({ receiverName: receiverName.toString() ,
-                      totalDonations: totalDonations })
+      this.setState({
+        receiverName: receiverName.toString(),
+        totalDonations: totalDonations
+      })
     } else {
       window.alert('DonationRequest contract not deployed to detected network.')
     }
@@ -54,49 +65,51 @@ class App extends Component {
     let msgValue = window.web3.utils.toWei(amount.toString(), 'Ether')
     this.setState({ loading: true })
     this.state.donationRequest.methods.donate(amount).send(
-        { from: this.state.account,
-          value: msgValue },
-        (error, result) => { 
-          if (error)
-            console.log(error)
-          else
-            console.log(result)
+      {
+        from: this.state.account,
+        value: msgValue
+      },
+      (error, result) => {
+        if (error)
+          console.log(error)
+        else
+          console.log(result)
       })
-    .on('transactionHash', (hash) => {
-      this.setState({ loading: false })
-    })
+      .on('transactionHash', (hash) => {
+        this.setState({ loading: false })
+      })
   }
 
   setReceiver = (address, name) => {
     this.setState({ state: window.ethereum.selectedAddress })
     this.setState({ loading: true })
     this.state.donationRequest.methods.setReceiver(address, name).send(
-        { from: this.state.account },
-        (error, result) => { 
-          if (error)
-            console.log(error)
-          else
-            console.log(result)
+      { from: this.state.account },
+      (error, result) => {
+        if (error)
+          console.log(error)
+        else
+          console.log(result)
       })
-    .on('transactionHash', (hash) => {
-      this.setState({ loading: false })
-    })
+      .on('transactionHash', (hash) => {
+        this.setState({ loading: false })
+      })
   }
 
   receiveDonations = () => {
     this.setState({ state: window.ethereum.selectedAddress })
     this.setState({ loading: true })
     this.state.donationRequest.methods.receiveDonations().send(
-        { from: this.state.account },
-        (error, result) => { 
-          if (error)
-            console.log(error)
-          else
-            console.log(result)
+      { from: this.state.account },
+      (error, result) => {
+        if (error)
+          console.log(error)
+        else
+          console.log(result)
       })
-    .on('transactionHash', (hash) => {
-      this.setState({ loading: false })
-    })
+      .on('transactionHash', (hash) => {
+        this.setState({ loading: false })
+      })
   }
 
   constructor(props) {
@@ -113,17 +126,32 @@ class App extends Component {
 
   render() {
     let content
-    if(this.state.loading) {
+    if (this.state.loading) {
       content = <p id="loader" className="text-center">Loading...</p>
     } else {
-        content = <Main
-          receiverName={this.state.receiverName}
-          account={this.state.account}
-          totalDonations={this.state.totalDonations}
-          donate={this.donate}
-          setReceiver={this.setReceiver}
-          receiveDonations={this.receiveDonations}
-      />
+      content =
+        <Container maxWidth="xs">
+          <BrowserRouter>
+          <AppBar position="static">
+            <Tabs value={0}>
+              <Tab label="HOME" component={Link} to="/home" />
+              <Tab label="DONATION DETAILS" component={Link} to={{pathname:"/donation-details", 
+                state: {
+                  receiverName: this.state.receiverName, 
+                  totalDonations: this.state.totalDonations
+                  }}}/>
+            </Tabs>
+          </AppBar>
+
+          <Switch>
+            <Route path="/home" component={Main} />
+            <Route path="/donation-details" component={DonationDetails} />
+            <Route path="/set-new-receiver" component={SetReceiver} />
+            <Route path="/receive-donations" component={ReceiveDonations} />
+            <Route path="/donate" component={ReceiveDonations} />
+          </Switch>
+          </BrowserRouter>
+        </Container>
     }
 
     return (

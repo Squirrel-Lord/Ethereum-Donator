@@ -6,14 +6,13 @@ class DonationDetails extends Component {
 ethConverter = 1000000000000000000
 
 getDonatedEther() {
-    //HOW TO ACCESS STATE OF THIS CLASS, STATE IS NULL
-    return this.state.totalDonations.toString() / this.ethConverter
+    return (1000000000000000000 / this.ethConverter).toString()
 }
 
   render() {
     return (
       <Container maxWidth="xs">
-        <br></br><label>Receiver: {this.props.receiverName}</label><br></br>
+        <br></br><label>Receiver: Dummy</label><br></br>
         <label>Donated Ether: {this.getDonatedEther()}</label><br></br>
       </Container>
     );

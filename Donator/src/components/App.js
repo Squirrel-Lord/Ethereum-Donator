@@ -11,7 +11,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Container from '@material-ui/core/Container';
-import { BrowserRouter, Link, Switch, Route } from 'react-router-dom'
+import { Link, Switch, Route } from 'react-router-dom'
 
 class App extends Component {
 
@@ -131,7 +131,6 @@ class App extends Component {
     } else {
       content =
         <Container maxWidth="xs">
-          <BrowserRouter>
           <AppBar position="static">
             <Tabs value={0}>
               <Tab label="HOME" component={Link} to="/home" />
@@ -150,7 +149,6 @@ class App extends Component {
             <Route path="/receive-donations" component={ReceiveDonations} />
             <Route path="/donate" component={ReceiveDonations} />
           </Switch>
-          </BrowserRouter>
         </Container>
     }
 

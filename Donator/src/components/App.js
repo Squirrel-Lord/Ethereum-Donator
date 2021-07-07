@@ -130,24 +130,23 @@ class App extends Component {
       content = <p id="loader" className="text-center">Loading...</p>
     } else {
       content =
-        <Container maxWidth="xs">
+        <Container maxWidth="md">
           <AppBar position="static">
             <Tabs value={0}>
-              <Tab label="HOME" component={Link} to="/home" />
-              <Tab label="DONATION DETAILS" component={Link} to={{pathname:"/donation-details", 
-                state: {
-                  receiverName: this.state.receiverName, 
-                  totalDonations: this.state.totalDonations
-                  }}}/>
+              <Tab label="HOME" value={0} component={Link} to="/home"/>
+              <Tab label="DONATION DETAILS" value={1} component={Link} to="/donation-details"/>
+              <Tab label="DONATE" value={2} component={Link} to="/donate"/>
+              <Tab label="SET RECEIVER" value={3} component={Link} to="/set-new-receiver"/>
+              <Tab label="RECEIVER DONATIONS" value={4} component={Link} to="/receive-donations"/>
             </Tabs>
           </AppBar>
 
           <Switch>
             <Route path="/home" component={Main} />
             <Route path="/donation-details" component={DonationDetails} />
+            <Route path="/donate" component={ReceiveDonations} />
             <Route path="/set-new-receiver" component={SetReceiver} />
             <Route path="/receive-donations" component={ReceiveDonations} />
-            <Route path="/donate" component={ReceiveDonations} />
           </Switch>
         </Container>
     }
@@ -155,7 +154,6 @@ class App extends Component {
     return (
       <div className="text-center">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"></link>
-        Ethereum Donator
         {content}
       </div>
     );

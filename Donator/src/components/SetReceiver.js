@@ -123,7 +123,7 @@ class Main extends Component {
                 event.preventDefault()
                 let address = document.getElementById("newReceiverAddress").value.toString()
                 let name = document.getElementById("newReceiverName").value.toString()
-                this.props.setReceiver(address, name)
+                this.setReceiver(address, name)
               }}>Set Receiver</button><br></br>
       </Container>
     );

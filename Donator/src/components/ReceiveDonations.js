@@ -119,7 +119,7 @@ class ReceiveDonations extends Component {
       <Container maxWidth="xs">
         <button onClick={(event) => {
                 event.preventDefault()
-                this.props.receiveDonations()
+                this.receiveDonations()
               }}>Receive Donations</button>
       </Container>
     );

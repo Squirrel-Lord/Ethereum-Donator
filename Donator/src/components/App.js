@@ -130,25 +130,25 @@ class App extends Component {
       content = <p id="loader" className="text-center">Loading...</p>
     } else {
       content =
-        <Container maxWidth="md">
+          <div>
           <AppBar position="static">
             <Tabs value={0}>
               <Tab label="HOME" value={0} component={Link} to="/home"/>
               <Tab label="DONATION DETAILS" value={1} component={Link} to="/donation-details"/>
               <Tab label="DONATE" value={2} component={Link} to="/donate"/>
               <Tab label="SET RECEIVER" value={3} component={Link} to="/set-new-receiver"/>
-              <Tab label="RECEIVER DONATIONS" value={4} component={Link} to="/receive-donations"/>
+              <Tab label="RECEIVE DONATIONS" value={4} component={Link} to="/receive-donations"/>
             </Tabs>
           </AppBar>
 
           <Switch>
             <Route path="/home" component={Main} />
             <Route path="/donation-details" component={DonationDetails} />
-            <Route path="/donate" component={ReceiveDonations} />
+            <Route path="/donate" component={Donate} />
             <Route path="/set-new-receiver" component={SetReceiver} />
             <Route path="/receive-donations" component={ReceiveDonations} />
           </Switch>
-        </Container>
+        </div>
     }
 
     return (

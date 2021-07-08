@@ -121,7 +121,7 @@ class Donate extends Component {
         <button onClick={(event) => {
                 event.preventDefault()
                 let amount = document.getElementById("donationAmount").value.toString()
-                this.props.donate(amount)
+                this.donate(amount)
               }}>Donate</button><br></br><br></br>
       </Container>
     );

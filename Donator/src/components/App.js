@@ -7,11 +7,8 @@ import Donate from './Donate'
 import SetReceiver from './SetReceiver'
 import ReceiveDonations from './ReceiveDonations'
 import './App.css'
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Container from '@material-ui/core/Container';
 import { Link, Switch, Route } from 'react-router-dom'
+import { Navbar, Nav } from 'react-bootstrap'
 
 class App extends Component {
 
@@ -130,16 +127,20 @@ class App extends Component {
       content = <p id="loader" className="text-center">Loading...</p>
     } else {
       content =
-          <div>
-          <AppBar position="static">
-            <Tabs value={0}>
-              <Tab label="HOME" value={0} component={Link} to="/home"/>
-              <Tab label="DONATION DETAILS" value={1} component={Link} to="/donation-details"/>
-              <Tab label="DONATE" value={2} component={Link} to="/donate"/>
-              <Tab label="SET RECEIVER" value={3} component={Link} to="/set-new-receiver"/>
-              <Tab label="RECEIVE DONATIONS" value={4} component={Link} to="/receive-donations"/>
-            </Tabs>
-          </AppBar>
+        <div>
+          <Navbar bg="dark" variant={"dark"} expand="lg">
+            <Navbar.Brand href="#home">Ethereum Donator</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link as={Link} to="/home">Home</Nav.Link>
+                <Nav.Link as={Link} to="/donation-details">Donation Details</Nav.Link>
+                <Nav.Link as={Link} to="/donate">Donate</Nav.Link>
+                <Nav.Link as={Link} to="/set-new-receiver">Set New Receiver</Nav.Link>
+                <Nav.Link as={Link} to="/receive-donations">Receive Donations</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
 
           <Switch>
             <Route path="/home" component={Main} />
@@ -153,7 +154,6 @@ class App extends Component {
 
     return (
       <div className="text-center">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"></link>
         {content}
       </div>
     );

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Container from '@material-ui/core/Container';
 import Web3 from 'web3'
 import DonationRequest from '../abis/DonationRequest.json'
 
@@ -116,14 +115,14 @@ class Donate extends Component {
 
   render() {
     return (
-      <Container maxWidth="xs">
+      <div>
         <input type="text" id="donationAmount"></input><br></br>
         <button onClick={(event) => {
                 event.preventDefault()
                 let amount = document.getElementById("donationAmount").value.toString()
                 this.donate(amount)
               }}>Donate</button><br></br><br></br>
-      </Container>
+      </div>
     );
   }
 }

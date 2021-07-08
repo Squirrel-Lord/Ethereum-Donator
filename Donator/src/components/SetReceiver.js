@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Container from '@material-ui/core/Container';
 import Web3 from 'web3'
 import DonationRequest from '../abis/DonationRequest.json'
 
@@ -116,7 +115,7 @@ class Main extends Component {
 
   render() {
     return (
-      <Container maxWidth="xs">
+      <div>
         <input type="text" id="newReceiverAddress" defaultValue="address"></input><br></br>
         <input type="text" id="newReceiverName" defaultValue="name"></input><br></br>
         <button onClick={(event) => {
@@ -125,7 +124,7 @@ class Main extends Component {
                 let name = document.getElementById("newReceiverName").value.toString()
                 this.setReceiver(address, name)
               }}>Set Receiver</button><br></br>
-      </Container>
+      </div>
     );
   }
 }

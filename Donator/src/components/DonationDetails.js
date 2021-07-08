@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Container from '@material-ui/core/Container';
 import Web3 from 'web3'
 import DonationRequest from '../abis/DonationRequest.json'
 
@@ -122,10 +121,10 @@ getDonatedEther() {
 
   render() {
     return (
-      <Container maxWidth="xs">
+      <div>
         <br></br><label>Receiver: {this.state.receiverName}</label><br></br>
         <label>Donated Ether: {this.getDonatedEther()}</label><br></br>
-      </Container>
+      </div>
     );
   }
 }

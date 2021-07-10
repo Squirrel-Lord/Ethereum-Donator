@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Web3 from 'web3'
 import DonationRequest from '../abis/DonationRequest.json'
-import Main from './Main'
+import Home from './Home'
 import DonationDetails from './DonationDetails'
 import Donate from './Donate'
 import SetReceiver from './SetReceiver'
@@ -117,7 +117,6 @@ class App extends Component {
       receiverName: 'Receiver Name',
       loading: true,
       totalDonations: 0,
-      isReceiver: true
     }
   }
 
@@ -143,7 +142,7 @@ class App extends Component {
           </Navbar>
 
           <Switch>
-            <Route path="/home" component={Main} />
+            <Route path="/home" component={Home} />
             <Route path="/donation-details" component={DonationDetails} />
             <Route path="/donate" component={Donate} />
             <Route path="/set-new-receiver" component={SetReceiver} />

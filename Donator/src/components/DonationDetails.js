@@ -106,10 +106,6 @@ receiveDonations = () => {
 constructor(props) {
   super(props)
   this.state = {
-    donate: {},
-    account: '0x0',
-    receiverName: 'Receiver Name',
-    loading: true,
     totalDonations: 0,
     isReceiver: true
   }

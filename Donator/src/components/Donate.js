@@ -16,7 +16,6 @@ class Donate extends Component {
 
     const networkId = await web3.eth.net.getId()
 
-    // Load initial DonationRequest contract data
     const donationRequestData = DonationRequest.networks[networkId]
     if (donationRequestData) {
       const donationRequest = new web3.eth.Contract(DonationRequest.abi, donationRequestData.address)
@@ -69,47 +68,11 @@ class Donate extends Component {
       })
   }
 
-  setReceiver = (address, name) => {
-    this.setState({ state: window.ethereum.selectedAddress })
-    this.setState({ loading: true })
-    this.state.donationRequest.methods.setReceiver(address, name).send(
-      { from: this.state.account },
-      (error, result) => {
-        if (error)
-          console.log(error)
-        else
-          console.log(result)
-      })
-      .on('transactionHash', (hash) => {
-        this.setState({ loading: false })
-      })
-  }
-
-  receiveDonations = () => {
-    this.setState({ state: window.ethereum.selectedAddress })
-    this.setState({ loading: true })
-    this.state.donationRequest.methods.receiveDonations().send(
-      { from: this.state.account },
-      (error, result) => {
-        if (error)
-          console.log(error)
-        else
-          console.log(result)
-      })
-      .on('transactionHash', (hash) => {
-        this.setState({ loading: false })
-      })
-  }
-
   constructor(props) {
     super(props)
     this.state = {
-      donate: {},
       account: '0x0',
-      receiverName: 'Receiver Name',
       loading: true,
-      totalDonations: 0,
-      isReceiver: true
     }
   }
 

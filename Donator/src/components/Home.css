@@ -1,0 +1,15 @@
+.home-container {
+    padding-top: 3cm;
+}
+
+.header {
+    padding-bottom: 2cm;
+}
+
+.app-description-row {
+    justify-content: center;
+}
+
+.app-description-col {
+    font-size:xx-large;
+}

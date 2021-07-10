@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Web3 from 'web3'
 import DonationRequest from '../abis/DonationRequest.json'
+import { InputGroup, FormControl, Button, Container }  from 'react-bootstrap'
+import './DonationDetails.css'
 
 class Donate extends Component {
 
@@ -79,12 +81,20 @@ class Donate extends Component {
   render() {
     return (
       <div>
-        <input type="text" id="donationAmount"></input><br></br>
-        <button onClick={(event) => {
+        <InputGroup className="mb-3 donation-screen">
+          <FormControl
+            placeholder="Amount of Ether"
+            aria-label="Amount of Ether"
+          />
+          <InputGroup.Append>
+            <Button 
+              onClick={(event) => {
                 event.preventDefault()
                 let amount = document.getElementById("donationAmount").value.toString()
                 this.donate(amount)
-              }}>Donate</button><br></br><br></br>
+              }}>Donate</Button>
+          </InputGroup.Append>
+        </InputGroup>
       </div>
     );
   }

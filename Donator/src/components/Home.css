@@ -2,10 +2,15 @@
     padding-top: 3cm;
 }
 
-.details-row {
-    justify-content: center;
+.header {
+    padding-bottom: 2cm;
+    text-align: center;
 }
 
-.details-col {
+.app-description-row {
+    text-align: center;
+}
+
+.app-description-col {
     font-size:xx-large;
 }

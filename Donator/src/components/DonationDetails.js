@@ -71,7 +71,7 @@ class DonationDetails extends Component {
       <div>
         <Container className="details-container">
           <Row className="details-row">
-            <Col >
+            <Col className="details-col">
               <h1>Receiver: {this.state.receiverName}</h1>
             </Col>
           </Row>

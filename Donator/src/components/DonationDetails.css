@@ -1,13 +1,10 @@
 .details-container {
-    padding-top: 3cm;
-}
-
-.header {
-    padding-bottom: 2cm;
+    padding-top: 5cm;
+    text-align: center;
 }
 
 .details-row {
-    justify-content: center;
+    padding-bottom: 3cm;
 }
 
 .details-col {

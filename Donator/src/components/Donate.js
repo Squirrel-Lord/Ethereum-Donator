@@ -82,7 +82,7 @@ class Donate extends Component {
     return (
       <div>
         <InputGroup className="mb-3 donation-screen">
-          <FormControl
+          <FormControl id="donationAmount"
             placeholder="Amount of Ether"
             aria-label="Amount of Ether"
           />

@@ -22,9 +22,6 @@ class App extends Component {
             <Nav className="mr-auto">
               <Nav.Link as={Link} to="/home">Home</Nav.Link>
               <Nav.Link as={Link} to="/donation-details">Donation Details</Nav.Link>
-              <Nav.Link as={Link} to="/donate">Donate</Nav.Link>
-              <Nav.Link as={Link} to="/set-new-receiver">Set New Receiver</Nav.Link>
-              <Nav.Link as={Link} to="/receive-donations">Receive Donations</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -32,8 +29,6 @@ class App extends Component {
         <Switch>
           <Route path="/home" component={Home} />
           <Route path="/donation-details" component={DonationDetails} />
-          <Route path="/donate" component={Donate} />
-          <Route path="/set-new-receiver" component={SetReceiver} />
           <Route path="/receive-donations" component={ReceiveDonations} />
         </Switch>
       </div>

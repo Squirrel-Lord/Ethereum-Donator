@@ -4,7 +4,9 @@ import DonationSystem from '../abis/DonationSystem.json'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { InputGroup, FormControl, Button }  from 'react-bootstrap'
+import Donate from './Donate.js'
+import SetReceiver from './SetReceiver'
+import ReceiveDonations from './ReceiveDonations'
 import './DonationDetails.css'
 
 class DonationDetails extends Component {
@@ -66,42 +68,6 @@ class DonationDetails extends Component {
     }
   }
 
-  donate = (amount) => {
-    this.setState({ state: window.ethereum.selectedAddress })
-    let msgValue = window.web3.utils.toWei(amount.toString(), 'Ether')
-    this.setState({ loading: true })
-    this.state.donationSystem.methods.donate(amount).send(
-      {
-        from: this.state.account,
-        value: msgValue
-      },
-      (error, result) => {
-        if (error)
-          console.log(error)
-        else
-          console.log(result)
-      })
-      .on('transactionHash', (hash) => {
-        this.setState({ loading: false })
-      })
-  }
-
-  setReceiver = (address, name) => {
-    this.setState({ state: window.ethereum.selectedAddress })
-    this.setState({ loading: true })
-    this.state.donationSystem.methods.setReceiver(address, name).send(
-      { from: this.state.account },
-      (error, result) => {
-        if (error)
-          console.log(error)
-        else
-          console.log(result)
-      })
-      .on('transactionHash', (hash) => {
-        this.setState({ loading: false })
-      })
-  }
-
   getDonatedEther() {
     return (this.state.totalDonations / this.ethConverter).toString()
   }
@@ -122,33 +88,11 @@ class DonationDetails extends Component {
           </Row>
         </Container>
 
-        <div>
-          <InputGroup className="mb-3 donation-screen">
-            <FormControl
-              placeholder="Amount of Ether"
-              aria-label="Amount of Ether"
-            />
-            <InputGroup.Append>
-              <Button
-                onClick={(event) => {
-                  event.preventDefault()
-                  let amount = document.getElementById("donationAmount").value.toString()
-                  this.donate(amount)
-                }}>Donate</Button>
-            </InputGroup.Append>
-          </InputGroup>
-        </div>
+        <Donate account={this.state.account}></Donate>
 
-        <div>
-        <input type="text" id="newReceiverAddress" defaultValue="address"></input><br></br>
-        <input type="text" id="newReceiverName" defaultValue="name"></input><br></br>
-        <button onClick={(event) => {
-                event.preventDefault()
-                let address = document.getElementById("newReceiverAddress").value.toString()
-                let name = document.getElementById("newReceiverName").value.toString()
-                this.setReceiver(address, name)
-              }}>Set Receiver</button><br></br>
-      </div>
+        <SetReceiver></SetReceiver>
+
+        <ReceiveDonations></ReceiveDonations>
       </div>
     );
   }

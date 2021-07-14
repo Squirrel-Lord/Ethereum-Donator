@@ -9,7 +9,7 @@
 
 pragma solidity ^0.5.16;
 
-contract DonationRequest {
+contract DonationSystem {
     
     uint constant public ethConverter = 1000000000000000000;
     address payable private receiverAddress;
@@ -69,15 +69,15 @@ contract DonationRequest {
 }
 
 contract DonationWarehouse {
-    mapping (string => address) private donationRequestAddresses;
+    mapping (string => address) private donationSystemAddresses;
     
     constructor() public { }
     
     function storeDonation(address donationAddress, string memory ipfsHash) public {
-        donationRequestAddresses[ipfsHash] = donationAddress;
+        donationSystemAddresses[ipfsHash] = donationAddress;
     }
     
     function getDonationAddressByHash(string memory ipfsHash) public view returns (address) {
-        return donationRequestAddresses[ipfsHash];
+        return donationSystemAddresses[ipfsHash];
     }
 }

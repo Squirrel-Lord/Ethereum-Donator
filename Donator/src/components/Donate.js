@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Web3 from 'web3'
-import DonationRequest from '../abis/DonationRequest.json'
+import DonationSystem from '../abis/DonationSystem.json'
 import { InputGroup, FormControl, Button, Container }  from 'react-bootstrap'
 import './DonationDetails.css'
 
@@ -18,20 +18,20 @@ class Donate extends Component {
 
     const networkId = await web3.eth.net.getId()
 
-    const donationRequestData = DonationRequest.networks[networkId]
-    if (donationRequestData) {
-      const donationRequest = new web3.eth.Contract(DonationRequest.abi, donationRequestData.address)
-      this.setState({ donationRequest })
+    const donationSystemData = DonationSystem.networks[networkId]
+    if (donationSystemData) {
+      const donationSystem = new web3.eth.Contract(DonationSystem.abi, donationSystemData.address)
+      this.setState({ donationSystem })
 
-      let receiverName = await donationRequest.methods.receiverName().call()
-      let totalDonations = await donationRequest.methods.totalDonations().call()
+      let receiverName = await donationSystem.methods.receiverName().call()
+      let totalDonations = await donationSystem.methods.totalDonations().call()
 
       this.setState({
         receiverName: receiverName.toString(),
         totalDonations: totalDonations
       })
     } else {
-      window.alert('DonationRequest contract not deployed to detected network.')
+      window.alert('DonationSystem contract not deployed to detected network.')
     }
 
     this.setState({ loading: false })
@@ -54,7 +54,7 @@ class Donate extends Component {
     this.setState({ state: window.ethereum.selectedAddress })
     let msgValue = window.web3.utils.toWei(amount.toString(), 'Ether')
     this.setState({ loading: true })
-    this.state.donationRequest.methods.donate(amount).send(
+    this.state.donationSystem.methods.donate(amount).send(
       {
         from: this.state.account,
         value: msgValue

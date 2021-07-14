@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Web3 from 'web3'
-import DonationRequest from '../abis/DonationRequest.json'
+import DonationSystem from '../abis/DonationSystem.json'
 import Home from './Home'
 import DonationDetails from './DonationDetails'
 import Donate from './Donate'

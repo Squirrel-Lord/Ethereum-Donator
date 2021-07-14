@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Web3 from 'web3'
-import DonationRequest from '../abis/DonationRequest.json'
+import DonationSystem from '../abis/DonationSystem.json'
 
 class ReceiveDonations extends Component {
 
@@ -16,20 +16,20 @@ class ReceiveDonations extends Component {
 
     const networkId = await web3.eth.net.getId()
 
-    const donationRequestData = DonationRequest.networks[networkId]
-    if (donationRequestData) {
-      const donationRequest = new web3.eth.Contract(DonationRequest.abi, donationRequestData.address)
-      this.setState({ donationRequest })
+    const donationSystemData = DonationSystem.networks[networkId]
+    if (donationSystemData) {
+      const donationSystem = new web3.eth.Contract(DonationSystem.abi, donationSystemData.address)
+      this.setState({ donationSystem })
 
-      let receiverName = await donationRequest.methods.receiverName().call()
-      let totalDonations = await donationRequest.methods.totalDonations().call()
+      let receiverName = await donationSystem.methods.receiverName().call()
+      let totalDonations = await donationSystem.methods.totalDonations().call()
 
       this.setState({
         receiverName: receiverName.toString(),
         totalDonations: totalDonations
       })
     } else {
-      window.alert('DonationRequest contract not deployed to detected network.')
+      window.alert('DonationSystem contract not deployed to detected network.')
     }
 
     this.setState({ loading: false })
@@ -51,7 +51,7 @@ class ReceiveDonations extends Component {
   receiveDonations = () => {
     this.setState({ state: window.ethereum.selectedAddress })
     this.setState({ loading: true })
-    this.state.donationRequest.methods.receiveDonations().send(
+    this.state.donationSystem.methods.receiveDonations().send(
       { from: this.state.account },
       (error, result) => {
         if (error)

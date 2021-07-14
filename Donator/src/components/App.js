@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
-import Web3 from 'web3'
-import DonationSystem from '../abis/DonationSystem.json'
 import Home from './Home'
 import DonationDetails from './DonationDetails'
-import Donate from './Donate'
-import SetReceiver from './SetReceiver'
-import ReceiveDonations from './ReceiveDonations'
+import RequestDonation from './RequestDonation'
 import './App.css'
 import { Link, Switch, Route } from 'react-router-dom'
 import { Navbar, Nav } from 'react-bootstrap'
@@ -22,6 +18,7 @@ class App extends Component {
             <Nav className="mr-auto">
               <Nav.Link as={Link} to="/home">Home</Nav.Link>
               <Nav.Link as={Link} to="/donation-details">Donation Details</Nav.Link>
+              <Nav.Link as={Link} to="/request-donation">Request Donation</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -29,7 +26,7 @@ class App extends Component {
         <Switch>
           <Route path="/home" component={Home} />
           <Route path="/donation-details" component={DonationDetails} />
-          <Route path="/receive-donations" component={ReceiveDonations} />
+          <Route path="/request-donation" component={RequestDonation} />
         </Switch>
       </div>
     );

@@ -69,15 +69,15 @@ contract DonationSystem {
 }
 
 contract DonationWarehouse {
-    mapping (string => address) private donationSystemAddresses;
+    mapping (address => string) private donationHashes;
     
     constructor() public { }
     
     function storeDonation(address donationAddress, string memory ipfsHash) public {
-        donationSystemAddresses[ipfsHash] = donationAddress;
+        donationHashes[donationAddress] = ipfsHash;
     }
     
-    function getDonationAddressByHash(string memory ipfsHash) public view returns (address) {
-        return donationSystemAddresses[ipfsHash];
+    function getDonationHashByAddress(address donationAddress) public view returns (string memory) {
+        return donationHashes[donationAddress];
     }
 }

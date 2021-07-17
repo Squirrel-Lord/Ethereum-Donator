@@ -31,17 +31,17 @@
       "constant": true,
       "inputs": [
         {
-          "internalType": "string",
-          "name": "ipfsHash",
-          "type": "string"
+          "internalType": "address",
+          "name": "donationAddress",
+          "type": "address"
         }
       ],
-      "name": "getDonationAddressByHash",
+      "name": "getDonationHashByAddress",
       "outputs": [
         {
-          "internalType": "address",
+          "internalType": "string",
           "name": "",
-          "type": "address"
+          "type": "string"
         }
       ],
       "payable": false,
@@ -49,12 +49,12 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"string\",\"name\":\"ipfsHash\",\"type\":\"string\"}],\"name\":\"getDonationAddressByHash\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"donationAddress\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"ipfsHash\",\"type\":\"string\"}],\"name\":\"storeDonation\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/rossb/Documents/EthDonator/Ethereum-Donator/Donator/src/contracts/DonationSystem.sol\":\"DonationWarehouse\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/rossb/Documents/EthDonator/Ethereum-Donator/Donator/src/contracts/DonationSystem.sol\":{\"keccak256\":\"0xe0b9a6ec515c0287b569e6a062dd053a92b72ba96715f77f5e4380d90124802d\",\"urls\":[\"bzz-raw://bdd81fe30f6dc4c4e1447c47dc0eafff26d64f8086afd5c7d041214abeda8930\",\"dweb:/ipfs/QmdibpMHp1iUbrqxqomKB3MV7iYHdQse2WdNDjKoqTbXTg\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b50610384806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c8063a79a43f51461003b578063e8b32ffc14610116575b600080fd5b6101146004803603604081101561005157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019064010000000081111561008e57600080fd5b8201836020820111156100a057600080fd5b803590602001918460018302840111640100000000831117156100c257600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290505050610211565b005b6101cf6004803603602081101561012c57600080fd5b810190808035906020019064010000000081111561014957600080fd5b82018360208201111561015b57600080fd5b8035906020019184600183028401116401000000008311171561017d57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192905050506102bd565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b816000826040518082805190602001908083835b602083106102485780518252602082019150602081019050602083039250610225565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505050565b600080826040518082805190602001908083835b602083106102f457805182526020820191506020810190506020830392506102d1565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905091905056fea265627a7a72315820718ddbdaf2193fb1625a0b43ec8711fa7e68b0ae9e6c6ceafc5978cd9fea664c64736f6c63430005100032",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c8063a79a43f51461003b578063e8b32ffc14610116575b600080fd5b6101146004803603604081101561005157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019064010000000081111561008e57600080fd5b8201836020820111156100a057600080fd5b803590602001918460018302840111640100000000831117156100c257600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290505050610211565b005b6101cf6004803603602081101561012c57600080fd5b810190808035906020019064010000000081111561014957600080fd5b82018360208201111561015b57600080fd5b8035906020019184600183028401116401000000008311171561017d57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192905050506102bd565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b816000826040518082805190602001908083835b602083106102485780518252602082019150602081019050602083039250610225565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505050565b600080826040518082805190602001908083835b602083106102f457805182526020820191506020810190506020830392506102d1565b6001836020036101000a038019825116818451168082178552505050505050905001915050908152602001604051809103902060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905091905056fea265627a7a72315820718ddbdaf2193fb1625a0b43ec8711fa7e68b0ae9e6c6ceafc5978cd9fea664c64736f6c63430005100032",
-  "sourceMap": "2322:456:0:-;;;2429:24;8:9:-1;5:2;;;30:1;27;20:12;5:2;2429:24:0;2322:456;;;;;;",
-  "deployedSourceMap": "2322:456:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2322:456:0;;;;;;;;;;;;;;;;;;;;;;;;2465:150;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2465:150:0;;;;;;;;;;;;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;2465:150:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;2465:150:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;2465:150:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;2465:150:0;;;;;;;;;;;;;;;:::i;:::-;;2627:148;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2627:148:0;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;2627:148:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;2627:148:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;2627:148:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;2627:148:0;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;2465:150;2592:15;2555:24;2580:8;2555:34;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:11;36:153;;182:3;176:10;171:3;164:23;98:2;93:3;89:12;82:19;;123:2;118:3;114:12;107:19;;148:2;143:3;139:12;132:19;;36:153;;;274:1;267:3;263:2;259:12;254:3;250:22;246:30;315:4;311:9;305:3;299:10;295:26;356:4;350:3;344:10;340:21;389:7;380;377:20;372:3;365:33;3:399;;;2555:34:0;;;;;;;;;;;;;;;;;;;;;;:52;;;;;;;;;;;;;;;;;;2465:150;;:::o;2627:148::-;2706:7;2733:24;2758:8;2733:34;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:11;36:153;;182:3;176:10;171:3;164:23;98:2;93:3;89:12;82:19;;123:2;118:3;114:12;107:19;;148:2;143:3;139:12;132:19;;36:153;;;274:1;267:3;263:2;259:12;254:3;250:22;246:30;315:4;311:9;305:3;299:10;295:26;356:4;350:3;344:10;340:21;389:7;380;377:20;372:3;365:33;3:399;;;2733:34:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2726:41;;2627:148;;;:::o",
-  "source": "/**\r\n * This smart contract allows users to donate ether through donate(). \r\n * The receiving address of the donations is set to message sender\r\n * when the contract is deployed. Only the receiving address can\r\n * choose to accept donations through receiveDonations() or change\r\n * the current receivng address. Once donations are received, the\r\n * contract is made inactive.\r\n*/\r\n\r\npragma solidity ^0.5.16;\r\n\r\ncontract DonationSystem {\r\n    \r\n    uint constant public ethConverter = 1000000000000000000;\r\n    address payable private receiverAddress;\r\n    string public receiverName;\r\n    uint public totalDonations;\r\n    bool public donationsReceived;\r\n\r\n    constructor() public {\r\n        receiverAddress = msg.sender;\r\n        receiverName = \"Contract Creator\";\r\n        totalDonations = 0;\r\n        donationsReceived = false;\r\n    }\r\n\r\n    modifier active {\r\n        require(!donationsReceived, \"Error: The donation contract is inactive. Please deploy a new donation request.\");\r\n        _;\r\n    }\r\n    \r\n    modifier isReceiver {\r\n        require(msg.sender == receiverAddress, \"Error: Only the receiver may initiate donation receivance.\");\r\n        _;\r\n    }\r\n    \r\n    modifier isNotReceiver {\r\n        require(msg.sender != receiverAddress, \"Error: The receiver may not donate to the contract.\");\r\n        _;\r\n    }\r\n\r\n    function () external payable {}\r\n\r\n    /**\r\n     * This function updates the receiverAddress.\r\n    */\r\n    function setReceiver(address payable  _receiverAddress, string memory _receiverName) public active {\r\n        require(msg.sender == receiverAddress, \"Error: You must be the current receiver to set the receiving address.\");\r\n        receiverAddress = _receiverAddress;\r\n        receiverName = _receiverName;\r\n    }\r\n    \r\n    /**\r\n     * This function allows users to donate ether to the contract.\r\n    */\r\n    function donate(uint amount) public payable active isNotReceiver{\r\n        \r\n        address(this).transfer(amount * ethConverter);\r\n        totalDonations += msg.value;\r\n    }\r\n    \r\n    /**\r\n     * This function lets the receiverAddress acquire the donations stored in the smart contract.\r\n    */\r\n    function receiveDonations() public payable active isReceiver {\r\n        receiverAddress.transfer(address(this).balance);\r\n        donationsReceived = true;\r\n    }\r\n}\r\n\r\ncontract DonationWarehouse {\r\n    mapping (string => address) private donationSystemAddresses;\r\n    \r\n    constructor() public { }\r\n    \r\n    function storeDonation(address donationAddress, string memory ipfsHash) public {\r\n        donationSystemAddresses[ipfsHash] = donationAddress;\r\n    }\r\n    \r\n    function getDonationAddressByHash(string memory ipfsHash) public view returns (address) {\r\n        return donationSystemAddresses[ipfsHash];\r\n    }\r\n}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"donationAddress\",\"type\":\"address\"}],\"name\":\"getDonationHashByAddress\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"donationAddress\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"ipfsHash\",\"type\":\"string\"}],\"name\":\"storeDonation\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/rossb/Documents/EthDonator/Ethereum-Donator/Donator/src/contracts/DonationSystem.sol\":\"DonationWarehouse\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/rossb/Documents/EthDonator/Ethereum-Donator/Donator/src/contracts/DonationSystem.sol\":{\"keccak256\":\"0x5d2ea0967e40a501694fe504802bb38c10fab41095b5f289171a5cc66916c7a9\",\"urls\":[\"bzz-raw://c7aec53d17a28ce84e73bf283fff94314f742f9d834db304a1727cf8f2b95dd1\",\"dweb:/ipfs/Qmb2UzarLwk3CTkfPzZyS9RCQ2YcFKuzCo6JyGSSFf6Rro\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506103e4806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80631a0eb7dd1461003b578063a79a43f5146100f8575b600080fd5b61007d6004803603602081101561005157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506101d3565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100bd5780820151818401526020810190506100a2565b50505050905090810190601f1680156100ea5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6101d16004803603604081101561010e57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019064010000000081111561014b57600080fd5b82018360208201111561015d57600080fd5b8035906020019184600183028401116401000000008311171561017f57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192905050506102b3565b005b60606000808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102a75780601f1061027c576101008083540402835291602001916102a7565b820191906000526020600020905b81548152906001019060200180831161028a57829003601f168201915b50505050509050919050565b806000808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020908051906020019061030592919061030a565b505050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061034b57805160ff1916838001178555610379565b82800160010185558215610379579182015b8281111561037857825182559160200191906001019061035d565b5b509050610386919061038a565b5090565b6103ac91905b808211156103a8576000816000905550600101610390565b5090565b9056fea265627a7a72315820dfad1958955388c9c79509c44cfae3447963a3453db0b8fd629ebd76a1bdb32664736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80631a0eb7dd1461003b578063a79a43f5146100f8575b600080fd5b61007d6004803603602081101561005157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506101d3565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100bd5780820151818401526020810190506100a2565b50505050905090810190601f1680156100ea5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6101d16004803603604081101561010e57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019064010000000081111561014b57600080fd5b82018360208201111561015d57600080fd5b8035906020019184600183028401116401000000008311171561017f57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192905050506102b3565b005b60606000808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102a75780601f1061027c576101008083540402835291602001916102a7565b820191906000526020600020905b81548152906001019060200180831161028a57829003601f168201915b50505050509050919050565b806000808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020908051906020019061030592919061030a565b505050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061034b57805160ff1916838001178555610379565b82800160010185558215610379579182015b8281111561037857825182559160200191906001019061035d565b5b509050610386919061038a565b5090565b6103ac91905b808211156103a8576000816000905550600101610390565b5090565b9056fea265627a7a72315820dfad1958955388c9c79509c44cfae3447963a3453db0b8fd629ebd76a1bdb32664736f6c63430005100032",
+  "sourceMap": "2322:440:0:-;;;2419:24;8:9:-1;5:2;;;30:1;27;20:12;5:2;2419:24:0;2322:440;;;;;;",
+  "deployedSourceMap": "2322:440:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2322:440:0;;;;;;;;;;;;;;;;;;;;;;;;2607:152;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2607:152:0;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;2607:152:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2455:140;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2455:140:0;;;;;;;;;;;;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;2455:140:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;2455:140:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;2455:140:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;2455:140:0;;;;;;;;;;;;;;;:::i;:::-;;2607:152;2687:13;2720:14;:31;2735:15;2720:31;;;;;;;;;;;;;;;2713:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2607:152;;;:::o;2455:140::-;2579:8;2545:14;:31;2560:15;2545:31;;;;;;;;;;;;;;;:42;;;;;;;;;;;;:::i;:::-;;2455:140;;:::o;2322:440::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "/**\r\n * This smart contract allows users to donate ether through donate(). \r\n * The receiving address of the donations is set to message sender\r\n * when the contract is deployed. Only the receiving address can\r\n * choose to accept donations through receiveDonations() or change\r\n * the current receivng address. Once donations are received, the\r\n * contract is made inactive.\r\n*/\r\n\r\npragma solidity ^0.5.16;\r\n\r\ncontract DonationSystem {\r\n    \r\n    uint constant public ethConverter = 1000000000000000000;\r\n    address payable private receiverAddress;\r\n    string public receiverName;\r\n    uint public totalDonations;\r\n    bool public donationsReceived;\r\n\r\n    constructor() public {\r\n        receiverAddress = msg.sender;\r\n        receiverName = \"Contract Creator\";\r\n        totalDonations = 0;\r\n        donationsReceived = false;\r\n    }\r\n\r\n    modifier active {\r\n        require(!donationsReceived, \"Error: The donation contract is inactive. Please deploy a new donation request.\");\r\n        _;\r\n    }\r\n    \r\n    modifier isReceiver {\r\n        require(msg.sender == receiverAddress, \"Error: Only the receiver may initiate donation receivance.\");\r\n        _;\r\n    }\r\n    \r\n    modifier isNotReceiver {\r\n        require(msg.sender != receiverAddress, \"Error: The receiver may not donate to the contract.\");\r\n        _;\r\n    }\r\n\r\n    function () external payable {}\r\n\r\n    /**\r\n     * This function updates the receiverAddress.\r\n    */\r\n    function setReceiver(address payable  _receiverAddress, string memory _receiverName) public active {\r\n        require(msg.sender == receiverAddress, \"Error: You must be the current receiver to set the receiving address.\");\r\n        receiverAddress = _receiverAddress;\r\n        receiverName = _receiverName;\r\n    }\r\n    \r\n    /**\r\n     * This function allows users to donate ether to the contract.\r\n    */\r\n    function donate(uint amount) public payable active isNotReceiver{\r\n        \r\n        address(this).transfer(amount * ethConverter);\r\n        totalDonations += msg.value;\r\n    }\r\n    \r\n    /**\r\n     * This function lets the receiverAddress acquire the donations stored in the smart contract.\r\n    */\r\n    function receiveDonations() public payable active isReceiver {\r\n        receiverAddress.transfer(address(this).balance);\r\n        donationsReceived = true;\r\n    }\r\n}\r\n\r\ncontract DonationWarehouse {\r\n    mapping (address => string) private donationHashes;\r\n    \r\n    constructor() public { }\r\n    \r\n    function storeDonation(address donationAddress, string memory ipfsHash) public {\r\n        donationHashes[donationAddress] = ipfsHash;\r\n    }\r\n    \r\n    function getDonationHashByAddress(address donationAddress) public view returns (string memory) {\r\n        return donationHashes[donationAddress];\r\n    }\r\n}",
   "sourcePath": "C:/Users/rossb/Documents/EthDonator/Ethereum-Donator/Donator/src/contracts/DonationSystem.sol",
   "ast": {
     "absolutePath": "/C/Users/rossb/Documents/EthDonator/Ethereum-Donator/Donator/src/contracts/DonationSystem.sol",
@@ -1842,43 +1842,42 @@
           {
             "constant": false,
             "id": 147,
-            "name": "donationSystemAddresses",
+            "name": "donationHashes",
             "nodeType": "VariableDeclaration",
             "scope": 178,
-            "src": "2356:60:0",
+            "src": "2356:50:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
-              "typeString": "mapping(string => address)"
+              "typeIdentifier": "t_mapping$_t_address_$_t_string_storage_$",
+              "typeString": "mapping(address => string)"
             },
             "typeName": {
               "id": 146,
               "keyType": {
                 "id": 144,
-                "name": "string",
+                "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "2365:6:0",
+                "src": "2365:7:0",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_string_storage_ptr",
-                  "typeString": "string"
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
                 }
               },
               "nodeType": "Mapping",
               "src": "2356:27:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
-                "typeString": "mapping(string => address)"
+                "typeIdentifier": "t_mapping$_t_address_$_t_string_storage_$",
+                "typeString": "mapping(address => string)"
               },
               "valueType": {
                 "id": 145,
-                "name": "address",
+                "name": "string",
                 "nodeType": "ElementaryTypeName",
-                "src": "2375:7:0",
-                "stateMutability": "nonpayable",
+                "src": "2376:6:0",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_address",
-                  "typeString": "address"
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
                 }
               }
             },
@@ -1889,7 +1888,7 @@
             "body": {
               "id": 150,
               "nodeType": "Block",
-              "src": "2450:3:0",
+              "src": "2440:3:0",
               "statements": []
             },
             "documentation": null,
@@ -1903,16 +1902,16 @@
               "id": 148,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2440:2:0"
+              "src": "2430:2:0"
             },
             "returnParameters": {
               "id": 149,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2450:0:0"
+              "src": "2440:0:0"
             },
             "scope": 178,
-            "src": "2429:24:0",
+            "src": "2419:24:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -1921,7 +1920,7 @@
             "body": {
               "id": 164,
               "nodeType": "Block",
-              "src": "2544:71:0",
+              "src": "2534:61:0",
               "statements": [
                 {
                   "expression": {
@@ -1936,28 +1935,28 @@
                       "baseExpression": {
                         "argumentTypes": null,
                         "id": 158,
-                        "name": "donationSystemAddresses",
+                        "name": "donationHashes",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 147,
-                        "src": "2555:24:0",
+                        "src": "2545:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
-                          "typeString": "mapping(string memory => address)"
+                          "typeIdentifier": "t_mapping$_t_address_$_t_string_storage_$",
+                          "typeString": "mapping(address => string storage ref)"
                         }
                       },
                       "id": 160,
                       "indexExpression": {
                         "argumentTypes": null,
                         "id": 159,
-                        "name": "ipfsHash",
+                        "name": "donationAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 155,
-                        "src": "2580:8:0",
+                        "referencedDeclaration": 153,
+                        "src": "2560:15:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_string_memory_ptr",
-                          "typeString": "string memory"
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
                         }
                       },
                       "isConstant": false,
@@ -1965,10 +1964,10 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "2555:34:0",
+                      "src": "2545:31:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_address",
-                        "typeString": "address"
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
                       }
                     },
                     "nodeType": "Assignment",
@@ -1976,25 +1975,25 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "id": 161,
-                      "name": "donationAddress",
+                      "name": "ipfsHash",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 153,
-                      "src": "2592:15:0",
+                      "referencedDeclaration": 155,
+                      "src": "2579:8:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_address",
-                        "typeString": "address"
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
                       }
                     },
-                    "src": "2555:52:0",
+                    "src": "2545:42:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
                     }
                   },
                   "id": 163,
                   "nodeType": "ExpressionStatement",
-                  "src": "2555:52:0"
+                  "src": "2545:42:0"
                 }
               ]
             },
@@ -2015,7 +2014,7 @@
                   "name": "donationAddress",
                   "nodeType": "VariableDeclaration",
                   "scope": 165,
-                  "src": "2488:23:0",
+                  "src": "2478:23:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2026,7 +2025,7 @@
                     "id": 152,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2488:7:0",
+                    "src": "2478:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -2042,7 +2041,7 @@
                   "name": "ipfsHash",
                   "nodeType": "VariableDeclaration",
                   "scope": 165,
-                  "src": "2513:22:0",
+                  "src": "2503:22:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2053,7 +2052,7 @@
                     "id": 154,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2513:6:0",
+                    "src": "2503:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2063,16 +2062,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2487:49:0"
+              "src": "2477:49:0"
             },
             "returnParameters": {
               "id": 157,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2544:0:0"
+              "src": "2534:0:0"
             },
             "scope": 178,
-            "src": "2465:150:0",
+            "src": "2455:140:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -2081,7 +2080,7 @@
             "body": {
               "id": 176,
               "nodeType": "Block",
-              "src": "2715:60:0",
+              "src": "2702:57:0",
               "statements": [
                 {
                   "expression": {
@@ -2089,28 +2088,28 @@
                     "baseExpression": {
                       "argumentTypes": null,
                       "id": 172,
-                      "name": "donationSystemAddresses",
+                      "name": "donationHashes",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 147,
-                      "src": "2733:24:0",
+                      "src": "2720:14:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
-                        "typeString": "mapping(string memory => address)"
+                        "typeIdentifier": "t_mapping$_t_address_$_t_string_storage_$",
+                        "typeString": "mapping(address => string storage ref)"
                       }
                     },
                     "id": 174,
                     "indexExpression": {
                       "argumentTypes": null,
                       "id": 173,
-                      "name": "ipfsHash",
+                      "name": "donationAddress",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 167,
-                      "src": "2758:8:0",
+                      "src": "2735:15:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_string_memory_ptr",
-                        "typeString": "string memory"
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
                       }
                     },
                     "isConstant": false,
@@ -2118,16 +2117,16 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "2733:34:0",
+                    "src": "2720:31:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
                     }
                   },
                   "functionReturnParameters": 171,
                   "id": 175,
                   "nodeType": "Return",
-                  "src": "2726:41:0"
+                  "src": "2713:38:0"
                 }
               ]
             },
@@ -2136,7 +2135,7 @@
             "implemented": true,
             "kind": "function",
             "modifiers": [],
-            "name": "getDonationAddressByHash",
+            "name": "getDonationHashByAddress",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 168,
@@ -2145,31 +2144,32 @@
                 {
                   "constant": false,
                   "id": 167,
-                  "name": "ipfsHash",
+                  "name": "donationAddress",
                   "nodeType": "VariableDeclaration",
                   "scope": 177,
-                  "src": "2661:22:0",
+                  "src": "2641:23:0",
                   "stateVariable": false,
-                  "storageLocation": "memory",
+                  "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string"
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
                   },
                   "typeName": {
                     "id": 166,
-                    "name": "string",
+                    "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2661:6:0",
+                    "src": "2641:7:0",
+                    "stateMutability": "nonpayable",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string"
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "2660:24:0"
+              "src": "2640:25:0"
             },
             "returnParameters": {
               "id": 171,
@@ -2181,42 +2181,41 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 177,
-                  "src": "2706:7:0",
+                  "src": "2687:13:0",
                   "stateVariable": false,
-                  "storageLocation": "default",
+                  "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
                   },
                   "typeName": {
                     "id": 169,
-                    "name": "address",
+                    "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2706:7:0",
-                    "stateMutability": "nonpayable",
+                    "src": "2687:6:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "2705:9:0"
+              "src": "2686:15:0"
             },
             "scope": 178,
-            "src": "2627:148:0",
+            "src": "2607:152:0",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
         "scope": 179,
-        "src": "2322:456:0"
+        "src": "2322:440:0"
       }
     ],
-    "src": "383:2395:0"
+    "src": "383:2379:0"
   },
   "legacyAST": {
     "attributes": {
@@ -4211,38 +4210,37 @@
           {
             "attributes": {
               "constant": false,
-              "name": "donationSystemAddresses",
+              "name": "donationHashes",
               "scope": 178,
               "stateVariable": true,
               "storageLocation": "default",
-              "type": "mapping(string => address)",
+              "type": "mapping(address => string)",
               "value": null,
               "visibility": "private"
             },
             "children": [
               {
                 "attributes": {
-                  "type": "mapping(string => address)"
+                  "type": "mapping(address => string)"
                 },
                 "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 144,
+                    "name": "ElementaryTypeName",
+                    "src": "2365:7:0"
+                  },
                   {
                     "attributes": {
                       "name": "string",
                       "type": "string"
                     },
-                    "id": 144,
-                    "name": "ElementaryTypeName",
-                    "src": "2365:6:0"
-                  },
-                  {
-                    "attributes": {
-                      "name": "address",
-                      "stateMutability": "nonpayable",
-                      "type": "address"
-                    },
                     "id": 145,
                     "name": "ElementaryTypeName",
-                    "src": "2375:7:0"
+                    "src": "2376:6:0"
                   }
                 ],
                 "id": 146,
@@ -4252,7 +4250,7 @@
             ],
             "id": 147,
             "name": "VariableDeclaration",
-            "src": "2356:60:0"
+            "src": "2356:50:0"
           },
           {
             "attributes": {
@@ -4279,7 +4277,7 @@
                 "children": [],
                 "id": 148,
                 "name": "ParameterList",
-                "src": "2440:2:0"
+                "src": "2430:2:0"
               },
               {
                 "attributes": {
@@ -4290,7 +4288,7 @@
                 "children": [],
                 "id": 149,
                 "name": "ParameterList",
-                "src": "2450:0:0"
+                "src": "2440:0:0"
               },
               {
                 "attributes": {
@@ -4301,12 +4299,12 @@
                 "children": [],
                 "id": 150,
                 "name": "Block",
-                "src": "2450:3:0"
+                "src": "2440:3:0"
               }
             ],
             "id": 151,
             "name": "FunctionDefinition",
-            "src": "2429:24:0"
+            "src": "2419:24:0"
           },
           {
             "attributes": {
@@ -4346,12 +4344,12 @@
                         },
                         "id": 152,
                         "name": "ElementaryTypeName",
-                        "src": "2488:7:0"
+                        "src": "2478:7:0"
                       }
                     ],
                     "id": 153,
                     "name": "VariableDeclaration",
-                    "src": "2488:23:0"
+                    "src": "2478:23:0"
                   },
                   {
                     "attributes": {
@@ -4372,17 +4370,17 @@
                         },
                         "id": 154,
                         "name": "ElementaryTypeName",
-                        "src": "2513:6:0"
+                        "src": "2503:6:0"
                       }
                     ],
                     "id": 155,
                     "name": "VariableDeclaration",
-                    "src": "2513:22:0"
+                    "src": "2503:22:0"
                   }
                 ],
                 "id": 156,
                 "name": "ParameterList",
-                "src": "2487:49:0"
+                "src": "2477:49:0"
               },
               {
                 "attributes": {
@@ -4393,7 +4391,7 @@
                 "children": [],
                 "id": 157,
                 "name": "ParameterList",
-                "src": "2544:0:0"
+                "src": "2534:0:0"
               },
               {
                 "children": [
@@ -4407,7 +4405,7 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "operator": "=",
-                          "type": "address"
+                          "type": "string storage ref"
                         },
                         "children": [
                           {
@@ -4417,7 +4415,7 @@
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": true,
-                              "type": "address"
+                              "type": "string storage ref"
                             },
                             "children": [
                               {
@@ -4427,12 +4425,12 @@
                                     null
                                   ],
                                   "referencedDeclaration": 147,
-                                  "type": "mapping(string memory => address)",
-                                  "value": "donationSystemAddresses"
+                                  "type": "mapping(address => string storage ref)",
+                                  "value": "donationHashes"
                                 },
                                 "id": 158,
                                 "name": "Identifier",
-                                "src": "2555:24:0"
+                                "src": "2545:14:0"
                               },
                               {
                                 "attributes": {
@@ -4440,18 +4438,18 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 155,
-                                  "type": "string memory",
-                                  "value": "ipfsHash"
+                                  "referencedDeclaration": 153,
+                                  "type": "address",
+                                  "value": "donationAddress"
                                 },
                                 "id": 159,
                                 "name": "Identifier",
-                                "src": "2580:8:0"
+                                "src": "2560:15:0"
                               }
                             ],
                             "id": 160,
                             "name": "IndexAccess",
-                            "src": "2555:34:0"
+                            "src": "2545:31:0"
                           },
                           {
                             "attributes": {
@@ -4459,33 +4457,33 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 153,
-                              "type": "address",
-                              "value": "donationAddress"
+                              "referencedDeclaration": 155,
+                              "type": "string memory",
+                              "value": "ipfsHash"
                             },
                             "id": 161,
                             "name": "Identifier",
-                            "src": "2592:15:0"
+                            "src": "2579:8:0"
                           }
                         ],
                         "id": 162,
                         "name": "Assignment",
-                        "src": "2555:52:0"
+                        "src": "2545:42:0"
                       }
                     ],
                     "id": 163,
                     "name": "ExpressionStatement",
-                    "src": "2555:52:0"
+                    "src": "2545:42:0"
                   }
                 ],
                 "id": 164,
                 "name": "Block",
-                "src": "2544:71:0"
+                "src": "2534:61:0"
               }
             ],
             "id": 165,
             "name": "FunctionDefinition",
-            "src": "2465:150:0"
+            "src": "2455:140:0"
           },
           {
             "attributes": {
@@ -4496,7 +4494,7 @@
               "modifiers": [
                 null
               ],
-              "name": "getDonationAddressByHash",
+              "name": "getDonationHashByAddress",
               "scope": 178,
               "stateMutability": "view",
               "superFunction": null,
@@ -4508,40 +4506,7 @@
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "ipfsHash",
-                      "scope": 177,
-                      "stateVariable": false,
-                      "storageLocation": "memory",
-                      "type": "string",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "string",
-                          "type": "string"
-                        },
-                        "id": 166,
-                        "name": "ElementaryTypeName",
-                        "src": "2661:6:0"
-                      }
-                    ],
-                    "id": 167,
-                    "name": "VariableDeclaration",
-                    "src": "2661:22:0"
-                  }
-                ],
-                "id": 168,
-                "name": "ParameterList",
-                "src": "2660:24:0"
-              },
-              {
-                "children": [
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "",
+                      "name": "donationAddress",
                       "scope": 177,
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -4556,19 +4521,52 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
+                        "id": 166,
+                        "name": "ElementaryTypeName",
+                        "src": "2641:7:0"
+                      }
+                    ],
+                    "id": 167,
+                    "name": "VariableDeclaration",
+                    "src": "2641:23:0"
+                  }
+                ],
+                "id": 168,
+                "name": "ParameterList",
+                "src": "2640:25:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 177,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
                         "id": 169,
                         "name": "ElementaryTypeName",
-                        "src": "2706:7:0"
+                        "src": "2687:6:0"
                       }
                     ],
                     "id": 170,
                     "name": "VariableDeclaration",
-                    "src": "2706:7:0"
+                    "src": "2687:13:0"
                   }
                 ],
                 "id": 171,
                 "name": "ParameterList",
-                "src": "2705:9:0"
+                "src": "2686:15:0"
               },
               {
                 "children": [
@@ -4584,7 +4582,7 @@
                           "isLValue": true,
                           "isPure": false,
                           "lValueRequested": false,
-                          "type": "address"
+                          "type": "string storage ref"
                         },
                         "children": [
                           {
@@ -4594,12 +4592,12 @@
                                 null
                               ],
                               "referencedDeclaration": 147,
-                              "type": "mapping(string memory => address)",
-                              "value": "donationSystemAddresses"
+                              "type": "mapping(address => string storage ref)",
+                              "value": "donationHashes"
                             },
                             "id": 172,
                             "name": "Identifier",
-                            "src": "2733:24:0"
+                            "src": "2720:14:0"
                           },
                           {
                             "attributes": {
@@ -4608,42 +4606,42 @@
                                 null
                               ],
                               "referencedDeclaration": 167,
-                              "type": "string memory",
-                              "value": "ipfsHash"
+                              "type": "address",
+                              "value": "donationAddress"
                             },
                             "id": 173,
                             "name": "Identifier",
-                            "src": "2758:8:0"
+                            "src": "2735:15:0"
                           }
                         ],
                         "id": 174,
                         "name": "IndexAccess",
-                        "src": "2733:34:0"
+                        "src": "2720:31:0"
                       }
                     ],
                     "id": 175,
                     "name": "Return",
-                    "src": "2726:41:0"
+                    "src": "2713:38:0"
                   }
                 ],
                 "id": 176,
                 "name": "Block",
-                "src": "2715:60:0"
+                "src": "2702:57:0"
               }
             ],
             "id": 177,
             "name": "FunctionDefinition",
-            "src": "2627:148:0"
+            "src": "2607:152:0"
           }
         ],
         "id": 178,
         "name": "ContractDefinition",
-        "src": "2322:456:0"
+        "src": "2322:440:0"
       }
     ],
     "id": 179,
     "name": "SourceUnit",
-    "src": "383:2395:0"
+    "src": "383:2379:0"
   },
   "compiler": {
     "name": "solc",
@@ -4651,7 +4649,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-07-14T00:29:06.812Z",
+  "updatedAt": "2021-07-17T20:44:52.653Z",
   "devdoc": {
     "methods": {}
   },

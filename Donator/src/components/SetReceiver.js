@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Web3 from 'web3'
 import DonationSystem from '../abis/DonationSystem.json'
+import { Button } from 'react-bootstrap'
 
 class Main extends Component {
 
@@ -63,12 +63,12 @@ class Main extends Component {
       <div>
         <input type="text" id="newReceiverAddress" defaultValue="address"></input><br></br>
         <input type="text" id="newReceiverName" defaultValue="name"></input><br></br>
-        <button onClick={(event) => {
+        <Button onClick={(event) => {
                 event.preventDefault()
                 let address = document.getElementById("newReceiverAddress").value.toString()
                 let name = document.getElementById("newReceiverName").value.toString()
                 this.setReceiver(address, name)
-              }}>Set Receiver</button><br></br>
+              }}>Set Receiver</Button><br></br>
       </div>
     );
   }

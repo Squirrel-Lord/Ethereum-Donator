@@ -14,59 +14,12 @@ class DonationDetails extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      account: '0x0',
-      loading: true,
       totalDonations: 0,
-      isReceiver: true,
       receiverName: 'Receiver not grabbed from contract'
     }
   }
 
   ethConverter = 1000000000000000000
-
-  async componentWillMount() {
-    await this.loadWeb3()
-    await this.loadBlockchainData()
-  }
-
-  async loadBlockchainData() {
-    const web3 = window.web3
-
-    this.setState({ account: window.ethereum.selectedAddress })
-
-    const networkId = await web3.eth.net.getId()
-
-    const donationSystemData = DonationSystem.networks[networkId]
-    if (donationSystemData) {
-      const donationSystem = new web3.eth.Contract(DonationSystem.abi, donationSystemData.address)
-      this.setState({ donationSystem })
-
-      let receiverName = await donationSystem.methods.receiverName().call()
-      let totalDonations = await donationSystem.methods.totalDonations().call()
-
-      this.setState({
-        receiverName: receiverName.toString(),
-        totalDonations: totalDonations
-      })
-    } else {
-      window.alert('DonationSystem contract not deployed to detected network.')
-    }
-
-    this.setState({ loading: false })
-  }
-
-  async loadWeb3() {
-    if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum)
-      await window.ethereum.enable()
-    }
-    else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider)
-    }
-    else {
-      window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
-    }
-  }
 
   getDonatedEther() {
     return (this.state.totalDonations / this.ethConverter).toString()

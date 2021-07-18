@@ -6,8 +6,13 @@ import './DonationDetails.css'
 
 class Donate extends Component {
 
-  async componentWillMount() {
-    await this.loadBlockchainData()
+  constructor(props) {
+    super(props)
+    this.state = {
+      account: '0x0',
+      contract: null,
+      ipfsHash: null,
+    }
   }
 
   async loadBlockchainData() {
@@ -20,20 +25,23 @@ class Donate extends Component {
     const donationSystemData = DonationSystem.networks[networkId]
     if (donationSystemData) {
       const donationSystem = new web3.eth.Contract(DonationSystem.abi, donationSystemData.address)
-      this.setState({ donationSystem })
-
-      let receiverName = await donationSystem.methods.receiverName().call()
-      let totalDonations = await donationSystem.methods.totalDonations().call()
-
-      this.setState({
-        receiverName: receiverName.toString(),
-        totalDonations: totalDonations
-      })
-    } else {
+      this.setState({ contract: donationSystem })
+    } 
+    else {
       window.alert('DonationSystem contract not deployed to detected network.')
     }
+  }
 
-    this.setState({ loading: false })
+  async loadWeb3() {
+    if (window.ethereum) {
+      window.web3 = new Web3(window.ethereum)
+    }
+    else if (window.web3) {
+      window.web3 = new Web3(window.web3.currentProvider)
+    }
+    else {
+      window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+    }
   }
 
   donate = (amount) => {
@@ -54,14 +62,6 @@ class Donate extends Component {
       .on('transactionHash', (hash) => {
         this.setState({ loading: false })
       })
-  }
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      account: '0x0',
-      loading: true,
-    }
   }
 
   render() {

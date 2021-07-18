@@ -9,62 +9,24 @@
 
 pragma solidity ^0.5.16;
 
-contract DonationSystem {
-    
-    uint constant public ethConverter = 1000000000000000000;
-    address payable private receiverAddress;
-    string public receiverName;
-    uint public totalDonations;
-    bool public donationsReceived;
+contract DonationRequest {
 
-    constructor() public {
-        receiverAddress = msg.sender;
-        receiverName = "Contract Creator";
-        totalDonations = 0;
-        donationsReceived = false;
-    }
-
-    modifier active {
-        require(!donationsReceived, "Error: The donation contract is inactive. Please deploy a new donation request.");
-        _;
-    }
+    constructor() public { }
     
-    modifier isReceiver {
-        require(msg.sender == receiverAddress, "Error: Only the receiver may initiate donation receivance.");
-        _;
-    }
-    
-    modifier isNotReceiver {
-        require(msg.sender != receiverAddress, "Error: The receiver may not donate to the contract.");
-        _;
-    }
-
     function () external payable {}
-
-    /**
-     * This function updates the receiverAddress.
-    */
-    function setReceiver(address payable  _receiverAddress, string memory _receiverName) public active {
-        require(msg.sender == receiverAddress, "Error: You must be the current receiver to set the receiving address.");
-        receiverAddress = _receiverAddress;
-        receiverName = _receiverName;
-    }
     
     /**
      * This function allows users to donate ether to the contract.
     */
-    function donate(uint amount) public payable active isNotReceiver{
-        
-        address(this).transfer(amount * ethConverter);
-        totalDonations += msg.value;
+    function donate(uint amount) public payable {
+        address(this).transfer(amount);
     }
     
     /**
      * This function lets the receiverAddress acquire the donations stored in the smart contract.
     */
-    function receiveDonations() public payable active isReceiver {
+    function receiveDonations(address payable receiverAddress) public payable {
         receiverAddress.transfer(address(this).balance);
-        donationsReceived = true;
     }
 }
 

@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
-import Web3 from 'web3'
 import DonationSystem from '../abis/DonationSystem.json'
+import { Button } from 'react-bootstrap'
 
 class ReceiveDonations extends Component {
 
-  async componentWillMount() {
-    await this.loadBlockchainData()
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: true,
+      receiverAddress: null,
+      account: '0x0',
+      contract: null,
+      ipfsHash: null,
+    }
   }
 
   async loadBlockchainData() {
@@ -18,20 +25,23 @@ class ReceiveDonations extends Component {
     const donationSystemData = DonationSystem.networks[networkId]
     if (donationSystemData) {
       const donationSystem = new web3.eth.Contract(DonationSystem.abi, donationSystemData.address)
-      this.setState({ donationSystem })
-
-      let receiverName = await donationSystem.methods.receiverName().call()
-      let totalDonations = await donationSystem.methods.totalDonations().call()
-
-      this.setState({
-        receiverName: receiverName.toString(),
-        totalDonations: totalDonations
-      })
-    } else {
+      this.setState({ contract: donationSystem })
+    } 
+    else {
       window.alert('DonationSystem contract not deployed to detected network.')
     }
+  }
 
-    this.setState({ loading: false })
+  async loadWeb3() {
+    if (window.ethereum) {
+      window.web3 = new Web3(window.ethereum)
+    }
+    else if (window.web3) {
+      window.web3 = new Web3(window.web3.currentProvider)
+    }
+    else {
+      window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+    }
   }
 
   receiveDonations = () => {
@@ -50,20 +60,13 @@ class ReceiveDonations extends Component {
       })
   }
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      loading: true,
-    }
-  }
-
   render() {
     return (
       <div>
-        <button onClick={(event) => {
+        <Button onClick={(event) => {
                 event.preventDefault()
                 this.receiveDonations()
-              }}>Receive Donations</button>
+              }}>Receive Donations</Button>
       </div>
     );
   }
